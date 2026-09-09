@@ -38,5 +38,8 @@ first.addEventListener("submit", function(dts) {
     
 
     cardContainer.append(card);
+    inputs.forEach(function(inp) {
+    inp.value = "";
+});
 
 });
