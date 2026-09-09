@@ -5,9 +5,6 @@ btn.addEventListener("click", function () {
     file.click();
 });
 file.addEventListener("change", function (dts){
-    const selectedFile = dts.target.files[0];
-
-    if (selectedFile) {
-        btn.textContent = selectedFile.name;
-    }
-});
+    btn.textContent = file.files[0].name;    
+      
+}   )

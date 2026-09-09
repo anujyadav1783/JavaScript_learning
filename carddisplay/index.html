@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Create Your Card</h1>
+
+        <form id="cardForm">
+
+            <!-- 1. Name -->
+            <input 
+                type="text" 
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <!-- 2. Profession -->
+            <input 
+                type="text" 
+                id="profession"
+                placeholder="Enter your profession"
+                required
+            >
+
+            <!-- 3. Description -->
+            <input 
+                type="text" 
+                id="description"
+                placeholder="Enter a short description"
+                required
+            >
+
+            <!-- 4. Email -->
+            <input 
+                type="email" 
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <!-- 5. Image -->
+            <input 
+                type="url" 
+                id="image"
+                placeholder="Enter image URL"
+                required
+            >
+
+            <button type="submit">Create Card</button>
+
+        </form>
+
+     <div id="cardContainer"></div>
+     <br>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
