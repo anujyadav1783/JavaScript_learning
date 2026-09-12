@@ -1,0 +1,85 @@
+JavaScript Browser Storage
+===========================
+
+Browser storage lets a website save small pieces of data in the user's
+browser. The three commonly used options are localStorage, sessionStorage,
+and cookies.
+
+1. localStorage
+---------------
+localStorage stores data as key-value pairs. The data remains available even
+after the browser is closed and opened again, so it is useful for preferences
+such as the selected theme, language, or layout.
+
+Methods:
+
+	localStorage.setItem("theme", "dark");
+	const theme = localStorage.getItem("theme");
+	localStorage.removeItem("theme");
+	localStorage.clear();
+
+In this project, the selected dark or light theme is saved with:
+
+	localStorage.setItem("theme", nextTheme);
+
+The saved theme is read when the page loads, which allows the page to remember
+the user's choice. localStorage stores values as strings, so objects must be
+converted with JSON.stringify() and JSON.parse().
+
+2. sessionStorage
+-----------------
+sessionStorage uses the same methods as localStorage, but its data lasts only
+for the current browser tab. The data is removed when that tab or window is
+closed. It is useful for temporary information such as form progress or a
+short-lived filter.
+
+	sessionStorage.setItem("step", "2");
+	const step = sessionStorage.getItem("step");
+	sessionStorage.removeItem("step");
+
+Each tab has its own sessionStorage. Data saved in one tab is not automatically
+available in another tab.
+
+3. Cookies
+----------
+Cookies are small pieces of data saved by the browser and sent to the server
+with matching requests. They are commonly used for login sessions,
+preferences, and tracking. JavaScript can create a cookie with document.cookie:
+
+	document.cookie = "username=Anuj; max-age=3600; path=/";
+
+The cookie above expires after 3600 seconds. A cookie can be deleted by setting
+its max-age to zero:
+
+	document.cookie = "username=; max-age=0; path=/";
+
+Important cookie options:
+
+- max-age or expires: controls when the cookie expires.
+- path: controls which paths can use the cookie.
+- Secure: sends the cookie only over HTTPS.
+- SameSite: helps control cross-site requests.
+- HttpOnly: prevents JavaScript from reading the cookie. This option can only
+  be set by the server.
+
+Comparison
+----------
+
+				localStorage   sessionStorage   Cookies
+Lifetime        Until deleted   Until tab closes  Until expiry
+Sent to server  No              No                Yes
+Typical size    Larger          Larger            Small
+Available to JS Yes             Yes               Yes, unless HttpOnly
+Best for        Preferences     Temporary data    Sessions and server data
+
+Which one should be used?
+--------------------------
+
+- Use localStorage for non-sensitive data that should survive browser restarts.
+- Use sessionStorage for non-sensitive data needed only in the current tab.
+- Use cookies when the server must receive the data on HTTP requests.
+
+Do not store passwords, access tokens, or other sensitive information in
+localStorage or sessionStorage because JavaScript can read them. For
+authentication cookies, servers should normally use HttpOnly, Secure, and an
+appropriate SameSite setting.
